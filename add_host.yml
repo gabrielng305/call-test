@@ -2,10 +2,12 @@
 - hosts: localhost
   gather_facts: false
       
+  tasks:
+  - name: loop
+    loop: "{{ entries }}"
+    loop_control:
+      loop_var: entry
+      
   roles:
     - add_host
-  
-      loop: "{{ entries }}"
-      loop_control:
-        loop_var: entry
-  
+
