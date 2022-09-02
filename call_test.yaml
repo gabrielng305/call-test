@@ -2,7 +2,6 @@
 - hosts: localhost
   connection: no
   gather_facts: no
-  ask_variables_on_launch=True
   tasks:
   - name: print call msg
     debug:
