@@ -5,4 +5,8 @@
   tasks:
   - name: print call msg
     debug:
-      var=entries
+      msg: "entry.hostname"
+    loop: "{{ entries }}"
+    loop_control:
+      loop_var: entry
+
