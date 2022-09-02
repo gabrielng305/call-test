@@ -5,5 +5,5 @@
   tasks:
   - name: print call msg
     debug:
-      var: entries
+      var: extra_vars
 
