@@ -1,6 +1,11 @@
 ---
 - hosts: localhost
   gather_facts: false
-
+      
   roles:
     - add_host
+  
+    loop: "{{ entries }}"
+    loop_control:
+      loop_var: entry
+  
