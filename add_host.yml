@@ -5,7 +5,7 @@
   roles:
     - add_host
   
-    loop: "{{ entries }}"
-    loop_control:
-      loop_var: entry
+      loop: "{{ entries }}"
+      loop_control:
+        loop_var: entry
   
