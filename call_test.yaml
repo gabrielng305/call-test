@@ -1,4 +1,8 @@
 ---
-- name: print call msg
-  debug:
-    var=entries
+- hosts: localhost
+  connection: no
+  gather_facts: no
+  tasks:
+  - name: print call msg
+    debug:
+      var=entries
