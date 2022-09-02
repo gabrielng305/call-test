@@ -1,0 +1,13 @@
+- name: Here we are using Ansible add_host module to add a host to in-memory inventory
+  add_host:
+    hostname: "{{ entry.hostname }}"
+    groups: h3cgroup
+    include_vars: h3c_hk.yml
+  when: entry.location == "hongkong"
+
+- name: Here we are using Ansible add_host module to add a host to in-memory inventory
+  add_host:
+    hostname: "{{ entry.hostname }}"
+    groups: h3cgroup
+    include_vars: h3c_mo.yml
+  when: entry.location == "macau"
