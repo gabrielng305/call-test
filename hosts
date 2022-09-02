@@ -1,0 +1,2 @@
+[serverlist]
+10.10.1.100 ansible_user=root ansible_password=h3c

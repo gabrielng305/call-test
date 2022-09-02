@@ -1,0 +1,4 @@
+---
+- name: print call msg
+  debug:
+    var=entries
