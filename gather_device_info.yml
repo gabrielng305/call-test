@@ -1,0 +1,12 @@
+- name: gather device information for cisco
+  hosts: ciscogroup
+  gather_facts: no
+  connection: ansible.netcommon.network_cli
+  roles:
+    - gather_device_info
+
+- name: gather device information for H3C
+  hosts: h3cgroup
+  gather_facts: no
+  roles:
+    - gather_device_info
