@@ -1,0 +1,30 @@
+    - name: "gather device information from H3C"
+      ansible.builtin.raw: display device manuinfo
+      register: result
+
+#    - name: test vars
+#      set_fact:
+#        device_name: '{{ result.stdout_lines | select("search", "DEVICE_NAME") | first }}'
+#        device_sn: '{{ result.stdout_lines | select("search", "DEVICE_SERIAL_NUMBER") | first }}'
+#
+#    - name: print device info
+#      debug:
+#        var: "device_name,device_sn"
+#
+    - name: print device info
+      debug:
+#        msg: "{{ result.stdout.split('\n') | regex_replace(':','\":\"') | regex_replace('\\r\\r', ) }}"
+        msg:
+          - '{{ result.stdout_lines | select("search", "DEVICE_NAME") | first }}'
+          - '{{ result.stdout_lines | select("search", "DEVICE_SERIAL_NUMBER") | first }}'
+#        msg: '{{ result.stdout_lines | select("match", "DEVICE_NAME|DEVICE_SERIAL_NUMBER") | list }}'
+      register: device_info
+
+    - ansible.utils.cli_parse:
+#        text: "{{ result.stdout }}"
+#        text: '{{ result.stdout_lines | select("search", "DEVICE_NAME") | first }}'
+        text: "{{ device_info.msg | join(',\n') }}"
+        parser:
+          name: ansible.netcommon.native
+          template_path: templates/display_device_manuinfo.yaml
+        set_fact: h3c_facts
